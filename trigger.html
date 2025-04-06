@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Trigger</title>
+</head>
+<body>
+<script>
+  // Создаём iframe с подарком
+  setTimeout(() => {
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://truetapper.github.io/casinox/iframe.html";
+    iframe.style.position = "fixed";
+    iframe.style.top = "50%";
+    iframe.style.left = "50%";
+    iframe.style.transform = "translate(-50%, -50%)";
+    iframe.style.width = "400px";
+    iframe.style.height = "600px";
+    iframe.style.border = "none";
+    iframe.style.zIndex = "9999";
+    iframe.style.boxShadow = "0 0 20px rgba(0,0,0,0.3)";
+    iframe.style.background = "#fff";
+    
+    // Добавить кнопку закрытия
+    const closeBtn = document.createElement("button");
+    closeBtn.textContent = "✖";
+    closeBtn.style.position = "fixed";
+    closeBtn.style.top = "calc(50% - 320px)";
+    closeBtn.style.left = "calc(50% + 190px)";
+    closeBtn.style.transform = "translate(-50%, -50%)";
+    closeBtn.style.zIndex = "10000";
+    closeBtn.style.background = "#f00";
+    closeBtn.style.color = "#fff";
+    closeBtn.style.border = "none";
+    closeBtn.style.padding = "5px 10px";
+    closeBtn.style.cursor = "pointer";
+    closeBtn.style.fontWeight = "bold";
+    closeBtn.onclick = () => {
+      parent.document.body.removeChild(iframe);
+      parent.document.body.removeChild(closeBtn);
+    };
+
+    parent.document.body.appendChild(iframe);
+    parent.document.body.appendChild(closeBtn);
+  }, 100);
+</script>
+</body>
+</html>
